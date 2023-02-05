@@ -2,16 +2,20 @@ package by.teachmeskills.homeworks.codewarstasks.StringReverse;
 
 import java.util.Scanner;
 
-public class StringReverse {
+public class StringReverseV2 {
     /*
      * Задача: Инвертировать строку
      * Пример: hello -> olleh
      * */
 
-    public static String solution(String str) {
-        StringBuffer firstBuffer = new StringBuffer(str);
-        firstBuffer.reverse();
-        return firstBuffer.toString();
+    public static char[] solution(String str) {
+        char[] revStr = str.toCharArray();
+        for (int i = 0; i < revStr.length / 2; i++) {
+            char swap = revStr[i];
+            revStr[i] = revStr[revStr.length - 1 - i];
+            revStr[revStr.length - 1 - i] = swap;
+        }
+        return revStr;
 
     }
 

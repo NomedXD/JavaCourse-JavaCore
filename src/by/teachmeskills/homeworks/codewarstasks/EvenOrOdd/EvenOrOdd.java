@@ -8,7 +8,7 @@ public class EvenOrOdd {
      * Пример: 124 -> "Even"; 111 -> "Odd"
      * */
     public static String even_or_odd(int number) {
-        if((number&1) == 0)
+        if ((number & 1) == 0)
             return "Even";
         else
             return "Odd";

@@ -9,11 +9,10 @@ public class SumOfDigits {
      * */
 
     public static int sumOfDigits(int n) {
-        int res=0;
-        while(n>=1)
-        {
-            res+=n%10;
-            n/=10;
+        int res = 0;
+        while (n >= 1) {
+            res += n % 10;
+            n /= 10;
         }
         return res;
     }

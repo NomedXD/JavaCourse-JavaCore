@@ -10,11 +10,11 @@ public class ReplaceAllSubStr {
      * Пример: coverage coverage -> covfefe covfefe
      * */
 
-    public static String covfefe(String tweet) {
+    public static String replaceString(String tweet) {
         String str = tweet;
 
-        if(str.contains("coverage"))
-            str = str.replaceAll("coverage","covfefe");
+        if (str.contains("coverage"))
+            str = str.replaceAll("coverage", "covfefe");
         else
             str = str.concat(" covfefe");
         return str;
@@ -24,7 +24,7 @@ public class ReplaceAllSubStr {
         System.out.print("Введите строку\n");
         Scanner in = new Scanner(System.in);
         String inStr = in.nextLine();
-        System.out.println(covfefe(inStr));
+        System.out.println(replaceString(inStr));
     }
 
 }
