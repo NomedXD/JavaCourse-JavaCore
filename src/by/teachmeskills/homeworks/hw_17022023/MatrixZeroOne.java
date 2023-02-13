@@ -14,7 +14,6 @@ public class MatrixZeroOne {
     00100
     10101
     */
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите размерность квадратной матрицы n");
@@ -26,11 +25,8 @@ public class MatrixZeroOne {
                 System.out.print(String.format("%3d", arr[i][j]));
             }
             System.out.print("\n");
-
         }
-
         System.out.println("\n");
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (arr[i][j] % 2 == 0)
@@ -41,6 +37,4 @@ public class MatrixZeroOne {
             System.out.print("\n");
         }
     }
-
-
 }

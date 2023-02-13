@@ -16,14 +16,12 @@ public class BubleSort {
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = (int) (Math.random() * 30);
-
         }
         System.out.println(Arrays.toString(arr));
-        Solution(arr);
+        bubbleSort(arr);
         System.out.println(Arrays.toString(arr));
     }
-
-    private static void Solution(int[] arr) {
+    private static void bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++)
             for (int j = 0; j < arr.length - 1 - i; j++)
                 if (arr[j] > arr[j + 1]) {
@@ -31,6 +29,5 @@ public class BubleSort {
                     arr[j + 1] = arr[j];
                     arr[j] = temp;
                 }
-
     }
 }

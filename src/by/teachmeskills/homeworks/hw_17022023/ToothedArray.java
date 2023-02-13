@@ -1,5 +1,4 @@
 package by.teachmeskills.homeworks.hw_17022023;
-
 import java.util.Scanner;
 
 public class ToothedArray {
@@ -18,6 +17,5 @@ public class ToothedArray {
             }
             System.out.print("\n");
         }
-
     }
 }

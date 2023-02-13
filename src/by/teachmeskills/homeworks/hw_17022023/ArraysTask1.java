@@ -15,13 +15,12 @@ public class ArraysTask1 {
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = (int) (Math.random() * 200 - 60);
-
         }
         System.out.println(Arrays.toString(arr));
-        Solution(arr);
+        solutionArray1(arr);
     }
 
-    private static void Solution(int[] arr) {
+    private static void solutionArray1(int[] arr) {
         int sum = 0;
         int minI = 0, maxI = 0;
         for (int i = 0; i < arr.length; i++) {
