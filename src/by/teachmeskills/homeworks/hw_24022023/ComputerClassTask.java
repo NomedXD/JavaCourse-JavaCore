@@ -10,14 +10,13 @@ public class ComputerClassTask {
 
     private boolean turnOnError, turnOffError, condition;
 
-    ComputerClassTask(TypeProcessor type, int ramCapacity, int hardDriveCapacity) {
+    public ComputerClassTask(TypeProcessor type, int ramCapacity, int hardDriveCapacity) {
         this.type = type;
         this.ramCapacity = ramCapacity;
         this.hardDriveCapacity = hardDriveCapacity;
         this.turnOnError = false;
         this.turnOffError = false;
         this.condition = false;
-
     }
 
 
@@ -59,7 +58,8 @@ public class ComputerClassTask {
             }
         } else if (!condition) {
             System.out.println("Компьютер уже выключен!");
-        } else System.out.println("Компик уже зависнул");
+        } else
+            System.out.println("Компик уже зависнул");
     }
 
     private void shiftOff() {
@@ -107,7 +107,7 @@ public class ComputerClassTask {
                 case 1 -> computer.turnOn();
                 case 2 -> computer.turnOff();
                 case 3 -> {
-                    if (computer.turnOffError) {  // ПОЧЕМУ МОЖНО ОБРАЩАТЬСЯ К ПОЛЮ, ЕСЛИ ОНО PRIVATE WTFFFFFF&!&!&
+                    if (computer.turnOffError) {
                         computer.shiftOff();
                     } else exit = true;
                 }

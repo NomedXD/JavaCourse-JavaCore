@@ -1,6 +1,5 @@
 package by.teachmeskills.homeworks.hw_24022023;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import java.util.Scanner;
 
 public class RecursionTask3 {
@@ -13,16 +12,19 @@ public class RecursionTask3 {
         System.out.println("Введите число N");
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
-        if (N < 2) {
-            System.out.println("NO");
-        } else recursionFunc(N);
+        recursionFunc(N);
     }
 
     private static void recursionFunc(int N) {
-        if (N == 1)
-            System.out.println("YES");
-        else if (N % 2 != 0)
+        if (N % 2 != 0 || N <= 0) {
             System.out.println("NO");
-        else recursionFunc(N / 2);
+            return;
+        } else {
+            N /= 2;
+            if (N == 1) {
+                System.out.println("YES");
+                return;
+            } else recursionFunc(N);
+        }
     }
 }

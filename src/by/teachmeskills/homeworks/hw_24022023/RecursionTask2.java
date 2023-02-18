@@ -14,25 +14,20 @@ public class RecursionTask2 {
         int A = in.nextInt();
         System.out.println("Введите целое число B");
         int B = in.nextInt();
-
-        if (A < B) {
-            boolean flag = true;
-            recursionFunc(A, B + 1, flag);
-        } else if (A > B) {
-            boolean flag = false;
-            recursionFunc(A, B - 1, flag);
-        } else System.out.print(A + " " + B);
-
+        recursionFunc(A, B);
     }
 
-    private static void recursionFunc(int num, int baseStep, boolean flag) {
-        if (num == baseStep)
+    private static void recursionFunc(int A, int B) {
+        if (Math.abs(A - B) <= 0) {
+            System.out.println(A + " ");
             return;
-        System.out.print(num + " ");
-        if (flag)
-            num++;
-        else num--;
-        recursionFunc(num, baseStep, flag);
+        }
+        if (A > B) {
+            System.out.println(A + " ");
+            recursionFunc(A - 1, B);
+        } else {
+            System.out.println(A + " ");
+            recursionFunc(A + 1, B);
+        }
     }
-
 }
