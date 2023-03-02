@@ -1,9 +1,9 @@
 package by.teachmeskills.homeworks.hw_03032023.task1.Hands;
 
-public class ToshibaHandClass implements IHand {
+public class ToshibaHandImpl implements IHand {
     private final int price;
 
-    public ToshibaHandClass(int price) {
+    public ToshibaHandImpl(int price) {
         this.price = price;
     }
 

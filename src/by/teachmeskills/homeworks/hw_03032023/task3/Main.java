@@ -1,62 +1,62 @@
 package by.teachmeskills.homeworks.hw_03032023.task3;
 
-import by.teachmeskills.homeworks.hw_03032023.task2.Transport;
-
-import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    static Animal[] arrayAnimals = new Animal[100]; // Ну раз нужно на массиве, значит ладно :(
-    static int currentIndex = 0;
+    private static Animal[] arrayAnimals = new Animal[100]; // Ну раз нужно на массиве, значит ладно :(
+    private static int currentIndex = 0;
+
+    private static int checkForPictureEquals(String str) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (Objects.equals(arrayAnimals[i].picture, str)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     private static void printOption() {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите картинку для поиска животного");
         String temp = in.nextLine();
-        for (int i = 0; i < currentIndex; i++) {
-            if (Objects.equals(arrayAnimals[i].picture, temp)) {
-                arrayAnimals[i].printall();
-                break;
-            }
-        }
+        int ind = checkForPictureEquals(temp);
+        if (ind != -1)
+            arrayAnimals[ind].printAll();
     }
 
     private static void changeCharacteristics() {
         System.out.println("Введите картинку для поиска животного");
         Scanner in = new Scanner(System.in);
         String temp = in.nextLine();
-        for (int i = 0; i < currentIndex; i++) {
-            if (Objects.equals(arrayAnimals[i].picture, temp)) {
-                System.out.println("Введите новую картинку");
-                arrayAnimals[i].setPicture(in.nextLine());
-                System.out.println("Введите голодно ли животное");
-                arrayAnimals[i].setHunger(in.nextBoolean());
-                in.nextLine();
-                System.out.println("Введите новый тип пищи животного");
-                switch (in.nextLine()) {
-                    case "MILK":
-                        arrayAnimals[i].setFoodType(Animal.FoodType.MILK);
-                        break;
-                    case "MEAT":
-                        arrayAnimals[i].setFoodType(Animal.FoodType.MEAT);
-                        break;
-                    case "BONES":
-                        arrayAnimals[i].setFoodType(Animal.FoodType.BONES);
-                        break;
-                    case "GRASS":
-                        arrayAnimals[i].setFoodType(Animal.FoodType.GRASS);
-                        break;
-                }
-
-                System.out.println("Введите новые координаты x и y");
-                arrayAnimals[i].location.setX(in.nextInt());
-                arrayAnimals[i].location.setY(in.nextInt());
-                System.out.println("Введите новые ширину и высоту");
-                arrayAnimals[i].boundaries.setWidth(in.nextInt());
-                arrayAnimals[i].boundaries.setWidth(in.nextInt());
-                break;
+        int ind = checkForPictureEquals(temp);
+        if (ind != -1) {
+            System.out.println("Введите новую картинку");
+            arrayAnimals[ind].setPicture(in.nextLine());
+            System.out.println("Введите голодно ли животное");
+            arrayAnimals[ind].setHunger(in.nextBoolean());
+            in.nextLine();
+            System.out.println("Введите новый тип пищи животного");
+            switch (in.nextLine()) {
+                case "MILK":
+                    arrayAnimals[ind].setFoodType(Animal.FoodType.MILK);
+                    break;
+                case "MEAT":
+                    arrayAnimals[ind].setFoodType(Animal.FoodType.MEAT);
+                    break;
+                case "BONES":
+                    arrayAnimals[ind].setFoodType(Animal.FoodType.BONES);
+                    break;
+                case "GRASS":
+                    arrayAnimals[ind].setFoodType(Animal.FoodType.GRASS);
+                    break;
             }
+            System.out.println("Введите новые координаты x и y");
+            arrayAnimals[ind].location.setX(in.nextInt());
+            arrayAnimals[ind].location.setY(in.nextInt());
+            System.out.println("Введите новые ширину и высоту");
+            arrayAnimals[ind].boundaries.setWidth(in.nextInt());
+            arrayAnimals[ind].boundaries.setWidth(in.nextInt());
         }
     }
 
@@ -64,12 +64,10 @@ public class Main {
         System.out.println("Введите картинку для поиска животного");
         Scanner in = new Scanner(System.in);
         String temp = in.nextLine();
-        for (int i = 0; i < currentIndex; i++) {
-            if (Objects.equals(arrayAnimals[i].picture, temp)) {
-                for (int j = i; j < currentIndex - 1; i++) {
-                    arrayAnimals[j] = arrayAnimals[j + 1];
-                }
-                break;
+        int ind = checkForPictureEquals(temp);
+        if (ind != -1) {
+            for (int j = ind; j < currentIndex - 1; ind++) {
+                arrayAnimals[j] = arrayAnimals[j + 1];
             }
         }
         currentIndex--;
@@ -160,7 +158,6 @@ public class Main {
                         }
                     }
                     break;
-
                 }
                 case 2: {
                     printOption();

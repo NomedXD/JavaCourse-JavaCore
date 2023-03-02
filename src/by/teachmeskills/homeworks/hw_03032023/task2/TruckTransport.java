@@ -1,7 +1,7 @@
 package by.teachmeskills.homeworks.hw_03032023.task2;
 
 public class TruckTransport extends GroundTransport {
-    int carringWeight;
+    private int carringWeight;
 
     public TruckTransport(int power, int maxSpeed, int mass, int wheelNums, int fuelPer100, int carringWeight, Type type) {
         super(power, maxSpeed, mass, wheelNums, fuelPer100, type);

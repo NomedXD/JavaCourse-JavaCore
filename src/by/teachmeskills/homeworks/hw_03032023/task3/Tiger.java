@@ -2,7 +2,7 @@ package by.teachmeskills.homeworks.hw_03032023.task3;
 
 public class Tiger extends Feline {
     @Override
-    protected void printall() {
+    protected void printAll() {
         System.out.printf("Все характеристики тигра: картинка - %s; голоден - %s; тип пищи - %s; координаты - %s; размеры - %s\n", picture, hunger, foodType, location.toString(), boundaries.toString());
     }
 

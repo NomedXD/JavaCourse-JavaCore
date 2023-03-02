@@ -12,7 +12,7 @@ public class Run {
         }
         ((PassengerTransport) car).howLongDrivePrint(100);
         ((CitizenTransport) airplainCitizen).checkForCapacity(500);
-        ((MilitaryTransport) militaryTransport).checkForCarapultSystem();
+        ((MilitaryTransport) militaryTransport).checkForCatapultSystem();
         ((MilitaryTransport) militaryTransport).checkForShoot();
         ((TruckTransport) truck).checkForCapacity(1000);
     }

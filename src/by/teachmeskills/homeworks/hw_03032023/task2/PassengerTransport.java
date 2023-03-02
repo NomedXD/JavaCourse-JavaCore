@@ -1,8 +1,8 @@
 package by.teachmeskills.homeworks.hw_03032023.task2;
 
 public class PassengerTransport extends GroundTransport {
-    carType typeCar;
-    int passengerCount;
+    private carType typeCar;
+    private int passengerCount;
 
     public PassengerTransport(int power, int maxSpeed, int mass, int wheelNums, int fuelPer100, int passengerCount, carType typecar, Type type) {
         super(power, maxSpeed, mass, wheelNums, fuelPer100, type);

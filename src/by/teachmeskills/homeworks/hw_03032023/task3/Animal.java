@@ -5,10 +5,17 @@ public abstract class Animal {
 
     protected abstract void eat();
 
+    protected String picture;
     protected Location location;
     protected Boundaries boundaries;
     protected FoodType foodType;
     protected boolean hunger;
+
+    public Animal(String picture, boolean hunger, FoodType foodType) {
+        this.picture = picture;
+        this.hunger = hunger;
+        this.foodType = foodType;
+    }
 
     public void setFoodType(FoodType foodType) {
         this.foodType = foodType;
@@ -20,22 +27,6 @@ public abstract class Animal {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public Animal(String picture, boolean hunger, FoodType foodType) {
-        this.picture = picture;
-        this.hunger = hunger;
-        this.foodType = foodType;
-    }
-
-    protected String picture;
-
-    protected void sleep() {
-        System.out.println("Животное спит по-обычному");
-    }
-
-    protected void roam() {
-        System.out.println("Животное бродит по-обычному");
     }
 
     protected static class Location {
@@ -106,5 +97,13 @@ public abstract class Animal {
         BONES
     }
 
-    protected abstract void printall();
+    protected void sleep() {
+        System.out.println("Животное спит по-обычному");
+    }
+
+    protected void roam() {
+        System.out.println("Животное бродит по-обычному");
+    }
+
+    protected abstract void printAll();
 }

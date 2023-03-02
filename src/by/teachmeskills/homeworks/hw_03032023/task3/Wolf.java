@@ -6,7 +6,7 @@ public class Wolf extends Canine {
     }
 
     @Override
-    protected void printall() {
+    protected void printAll() {
         System.out.printf("Все характеристики волка: картинка - %s; голоден - %s; тип пищи - %s; координаты - %s; размеры - %s\n", picture, hunger, foodType, location.toString(), boundaries.toString());
     }
 

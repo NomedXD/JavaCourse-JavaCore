@@ -1,15 +1,15 @@
 package by.teachmeskills.homeworks.hw_03032023.task1.Heads;
 
-public class SumsungHeadClass implements IHead {
+public class ToshibaHeadImpl implements IHead {
     private final int price;
 
-    public SumsungHeadClass(int price) {
+    public ToshibaHeadImpl(int price) {
         this.price = price;
     }
 
     @Override
     public void speek() {
-        System.out.println("Голова Sumsung говорит");
+        System.out.println("Голова Toshiba говорит");
     }
 
     @Override

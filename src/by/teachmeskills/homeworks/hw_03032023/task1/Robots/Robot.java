@@ -4,10 +4,16 @@ import by.teachmeskills.homeworks.hw_03032023.task1.Hands.IHand;
 import by.teachmeskills.homeworks.hw_03032023.task1.Heads.IHead;
 import by.teachmeskills.homeworks.hw_03032023.task1.Legs.ILeg;
 
-public class Robot implements IRobot{
+public class Robot implements IRobot {
     private IHead head;
     private IHand hand;
     private ILeg leg;
+
+    public Robot(IHead head, ILeg leg, IHand hand) {
+        this.hand = hand;
+        this.head = head;
+        this.leg = leg;
+    }
 
     public IHead getHead() {
         return head;
@@ -33,22 +39,16 @@ public class Robot implements IRobot{
         return leg;
     }
 
-    public Robot(IHead head, ILeg leg, IHand hand){
-        this.hand=hand;
-        this.head=head;
-        this.leg=leg;
-    }
-
     @Override
     public void action() {
-       head.speek();
-       hand.upHand();
-       leg.step();
+        head.speek();
+        hand.upHand();
+        leg.step();
     }
 
     @Override
     public int getPrice() {
-        return head.getPrice()+hand.getPrice()+leg.getPrice();
+        return head.getPrice() + hand.getPrice() + leg.getPrice();
     }
 
 }

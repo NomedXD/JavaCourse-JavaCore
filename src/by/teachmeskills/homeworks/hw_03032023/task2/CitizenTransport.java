@@ -1,8 +1,8 @@
 package by.teachmeskills.homeworks.hw_03032023.task2;
 
 public class CitizenTransport extends AirTransport {
-    int passangerCount;
-    boolean business;
+    private int passangerCount;
+    private boolean business;
 
     public CitizenTransport(int power, int maxSpeed, int mass, int wings, int minLineLength, int passangerCount, boolean business, Type type) {
         super(power, maxSpeed, mass, wings, minLineLength, type);

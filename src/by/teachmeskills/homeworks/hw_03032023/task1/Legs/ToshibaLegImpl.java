@@ -1,9 +1,9 @@
 package by.teachmeskills.homeworks.hw_03032023.task1.Legs;
 
-public class ToshibaLegClass implements ILeg {
+public class ToshibaLegImpl implements ILeg {
     private final int price;
 
-    public ToshibaLegClass(int price) {
+    public ToshibaLegImpl(int price) {
         this.price = price;
     }
 

@@ -1,9 +1,9 @@
 package by.teachmeskills.homeworks.hw_03032023.task1.Hands;
 
-public class SumsungHandClass implements IHand {
+public class SamsungHandImpl implements IHand {
     private final int price;
 
-    public SumsungHandClass(int price) {
+    public SamsungHandImpl(int price) {
         this.price = price;
     }
 
