@@ -4,12 +4,12 @@ import by.teachmeskills.homeworks.hw_03032023.task1.Hands.IHand;
 import by.teachmeskills.homeworks.hw_03032023.task1.Heads.IHead;
 import by.teachmeskills.homeworks.hw_03032023.task1.Legs.ILeg;
 
-public class Robot implements IRobot {
+public class RobotImpl implements IRobot {
     private IHead head;
     private IHand hand;
     private ILeg leg;
 
-    public Robot(IHead head, ILeg leg, IHand hand) {
+    public RobotImpl(IHead head, ILeg leg, IHand hand) {
         this.hand = hand;
         this.head = head;
         this.leg = leg;

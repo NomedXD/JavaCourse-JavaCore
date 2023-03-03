@@ -17,16 +17,28 @@ public abstract class Animal {
         this.foodType = foodType;
     }
 
-    public void setFoodType(FoodType foodType) {
-        this.foodType = foodType;
-    }
-
-    public void setHunger(boolean hunger) {
-        this.hunger = hunger;
+    public String getPicture() {
+        return picture;
     }
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
+    public boolean isHunger() {
+        return hunger;
+    }
+
+    public void setHunger(boolean hunger) {
+        this.hunger = hunger;
     }
 
     protected static class Location {
@@ -96,6 +108,7 @@ public abstract class Animal {
         MILK,
         BONES
     }
+
 
     protected void sleep() {
         System.out.println("Животное спит по-обычному");

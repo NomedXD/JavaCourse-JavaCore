@@ -10,7 +10,6 @@ public class Wolf extends Canine {
         System.out.printf("Все характеристики волка: картинка - %s; голоден - %s; тип пищи - %s; координаты - %s; размеры - %s\n", picture, hunger, foodType, location.toString(), boundaries.toString());
     }
 
-
     @Override
     protected void makeNoise() {
         System.out.println("Волг воет");

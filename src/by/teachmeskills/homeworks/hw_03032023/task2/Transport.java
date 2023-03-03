@@ -2,10 +2,10 @@ package by.teachmeskills.homeworks.hw_03032023.task2;
 
 public abstract class Transport {
 
-    protected final int power;
-    protected final int maxSpeed;
-    protected final int mass;
-    protected final Type type;
+    protected int power;
+    protected int maxSpeed;
+    protected int mass;
+    protected Type type;
 
     public Transport(int power, int maxSpeed, int mass, Type type) {
         this.power = power;

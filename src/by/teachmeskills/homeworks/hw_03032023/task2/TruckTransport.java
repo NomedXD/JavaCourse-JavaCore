@@ -8,6 +8,14 @@ public class TruckTransport extends GroundTransport {
         this.carringWeight = carringWeight;
     }
 
+    public int getCarringWeight() {
+        return carringWeight;
+    }
+
+    public void setCarringWeight(int carringWeight) {
+        this.carringWeight = carringWeight;
+    }
+
     @Override
     protected void printAll() {
         System.out.printf("Все характеристики легкового транспорта: мощность = %d; макс.скорость = %d; масса = %d\n", power, maxSpeed, mass);
@@ -15,7 +23,7 @@ public class TruckTransport extends GroundTransport {
         System.out.printf("Марка транспорта = %s; мощность в кВт = %f\n\n", type, countPower());
     }
 
-    void checkForCapacity(int weight) {
+    public void checkForCapacity(int weight) {
         System.out.println((weight > carringWeight) ? "Вам нужен грузовик побольше\n" : "Грузовик загружен\n");
     }
 }
