@@ -1,10 +1,6 @@
 package by.teachmeskills.homeworks.hw_03032023.task3;
 
 public abstract class Animal {
-    protected abstract void makeNoise();
-
-    protected abstract void eat();
-
     protected String picture;
     protected Location location;
     protected Boundaries boundaries;
@@ -119,4 +115,8 @@ public abstract class Animal {
     }
 
     protected abstract void printAll();
+
+    protected abstract void makeNoise();
+
+    protected abstract void eat();
 }
