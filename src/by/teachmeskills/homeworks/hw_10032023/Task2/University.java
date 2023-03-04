@@ -29,7 +29,7 @@ public class University {
         this.season = season;
     }
 
-    void printAll() {
+    public void printAll() {
         switch (season.toString()) {
             case "зима", "весна", "осень":
                 System.out.printf("Университет БГУиР, учащихся %d, сейчас мы учимся, потому что %s", studentsCount, season);
