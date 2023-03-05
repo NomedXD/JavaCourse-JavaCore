@@ -1,6 +1,6 @@
 package by.teachmeskills.homeworks.hw_10032023.task5part2;
 
-public class Product implements Comparable<Product>{
+public class Product{
     private int id;
     private String name;
     private int price;
@@ -33,11 +33,6 @@ public class Product implements Comparable<Product>{
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    @Override
-    public int compareTo(Product o) {
-        return 0;
     }
 }
 

@@ -1,6 +1,6 @@
 package by.teachmeskills.homeworks.hw_10032023.task4;
 
-import by.teachmeskills.homeworks.hw_10032023.Task1.Main;
+import by.teachmeskills.homeworks.hw_10032023.task4.exceptions.CarNotStartedException;
 
 public class Car {
     private CarBrandType carBrand;
@@ -58,9 +58,9 @@ public class Car {
         }
     }
 
-    public void start() throws CarStartException {
+    public void start() throws CarNotStartedException {
         if ((int) (Math.random() * 21) % 2 == 0) {
-            throw new CarStartException("Машина не завелась, ей крышка");
+            throw new CarNotStartedException("Машина не завелась, ей крышка");
         } else System.out.println("Машина завелась");
     }
 

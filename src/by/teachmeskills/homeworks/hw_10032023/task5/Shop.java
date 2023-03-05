@@ -1,5 +1,9 @@
 package by.teachmeskills.homeworks.hw_10032023.task5;
 
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EmptyProductListException;
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EntityAlreadyExistsException;
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EntityNotFoundException;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -52,7 +56,7 @@ public class Shop {
     public void removeProduct(int itemId) throws EmptyProductListException, EntityNotFoundException {
         if (getCurrentIndex() == 0)
             throw new EmptyProductListException("No products found");
-        int key = idSearch(itemId);
+        int key = searchById(itemId);
         if (key == -1)
             throw new EntityNotFoundException("Product with id = " + itemId + " not found");
         for (int i = key; i < products.length - 1; i++) {
@@ -64,7 +68,7 @@ public class Shop {
     public void changeProduct(int itemId) throws EmptyProductListException, EntityNotFoundException {
         if (getCurrentIndex() == 0)
             throw new EmptyProductListException("No products found");
-        int key = idSearch(itemId);
+        int key = searchById(itemId);
         if (key == -1)
             throw new EntityNotFoundException("Product with id = " + itemId + " not found");
         Scanner in = new Scanner(System.in);
@@ -77,7 +81,7 @@ public class Shop {
         products[key].setPrice(in.nextInt());
     }
 
-    private int idSearch(int itemId) {
+    private int searchById(int itemId) {
         for (int i = 0; i < getCurrentIndex(); i++) {
             if (products[i].getId() == itemId)
                 return i;

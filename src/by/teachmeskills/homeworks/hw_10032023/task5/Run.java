@@ -1,5 +1,9 @@
 package by.teachmeskills.homeworks.hw_10032023.task5;
 
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EmptyProductListException;
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EntityAlreadyExistsException;
+import by.teachmeskills.homeworks.hw_10032023.task5.exceptions.EntityNotFoundException;
+
 public class Run {
     public static void main(String[] args) {
         Shop shop = new Shop();
