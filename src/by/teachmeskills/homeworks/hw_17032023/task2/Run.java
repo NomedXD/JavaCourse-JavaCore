@@ -5,6 +5,7 @@ import java.text.BreakIterator;
 import java.util.Locale;
 
 public class Run {
+    // Тут в задании было именно 2 метода сделать статик в классе, поэтому так много кода в main :(
     public static void main(String[] args) {
         String str = "";
         try (BufferedReader reader = new BufferedReader(new FileReader(new File(TextFormater.getROOT() + "text.txt")));

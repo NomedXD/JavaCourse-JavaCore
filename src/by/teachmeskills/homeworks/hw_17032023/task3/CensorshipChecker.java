@@ -16,11 +16,11 @@ public class CensorshipChecker {
     }
 
     public static void censorCheck() throws IOException {
-        try(BufferedReader sourceReader = new BufferedReader(new FileReader(new File(ROOT + "sourcetext.txt")));
-            BufferedReader blacklistReader = new BufferedReader(new FileReader(new File(ROOT + "blacklist.txt")))) {
+        try(BufferedReader sourceReader = new BufferedReader(new FileReader(new File(getROOT() + "sourcetext.txt")));
+            BufferedReader blacklistReader = new BufferedReader(new FileReader(new File(getROOT() + "blacklist.txt")))) {
             List<String> resultList = new ArrayList<>();
             List<String> blackList = new ArrayList<>();
-            boolean check = false;
+            boolean checkBLWords = false;
             int sentencesCount = 0;
             // Считывание blackList слов
             String str = blacklistReader.readLine();
@@ -29,26 +29,26 @@ public class CensorshipChecker {
                 str = blacklistReader.readLine();
             }
             // Посимвольное чтение предложение до символов конца строки и поиск их в предложении
-            int c = sourceReader.read();
+            int readChar = sourceReader.read();
             StringBuilder temp = new StringBuilder();
-            while (c != -1){
-                if((char)c != '.' && (char)c!= '?' && (char)c!= '!'){
-                    temp.append((char)c);
+            while (readChar != -1){
+                if((char)readChar != '.' && (char)readChar!= '?' && (char)readChar!= '!'){
+                    temp.append((char)readChar);
                 } else{
                     String[] listWords = temp.toString().split("\\P{L}+");
                     for(String string : listWords){
                         if(blackList.contains(string)){
                             sentencesCount++;
-                            resultList.add(temp.toString()+(char)c);
-                            temp.delete(0,temp.length());
-                            check = true;
+                            resultList.add(temp.toString()+(char)readChar);
+                            checkBLWords = true;
                             break;
                         }
                     }
+                    temp.delete(0,temp.length());
                 }
-                c = sourceReader.read();
+                readChar = sourceReader.read();
             }
-            System.out.println((!check)? "Текст прошёл проверку":"Текст не прошел проверку. Количество предложений = "+sentencesCount);
+            System.out.println((!checkBLWords)? "Текст прошёл проверку":"Текст не прошел проверку. Количество предложений = "+sentencesCount);
             for(String s : resultList)
                 System.out.println(s);
         }catch (IOException e){
