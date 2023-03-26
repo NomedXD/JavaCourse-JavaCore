@@ -1,10 +1,12 @@
 package by.teachmeskills.homeworks.hw_31032023.task1;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
+import java.util.zip.ZipOutputStream; // org.apache.commons.io.IOUtil не нашел :(
 
 public class FolderCreator {
     private static final String FOLDER_PATH = "D:" + File.separator + "JavaStudy" + File.separator;
@@ -14,8 +16,9 @@ public class FolderCreator {
 
     public static void createAndRemoveFolder() {
         File folder = new File(FOLDER_PATH + FOLDER_NAME);
-        if (!folder.exists())
+        if (!folder.exists()) {
             folder.mkdir();
+        }
         try (FileOutputStream fos1 = new FileOutputStream(FOLDER_PATH + FOLDER_NAME + File.separator + "file1");
              FileOutputStream fos2 = new FileOutputStream(FOLDER_PATH + FOLDER_NAME + File.separator + "file2");
              FileOutputStream fos3 = new FileOutputStream(FOLDER_PATH + FOLDER_NAME + File.separator + "file3");
@@ -56,7 +59,6 @@ public class FolderCreator {
 
         } catch (IOException e) {
             System.out.println("Error occurred while performing I/O operations: " + e.getMessage());
-            ;
             e.printStackTrace();
         }
         /*

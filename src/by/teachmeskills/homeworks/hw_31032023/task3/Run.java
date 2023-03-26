@@ -14,9 +14,7 @@ public class Run {
                 case 1: {
                     /*
                     Вообще, здесь портится вся суть Generics. Мы как бы позволяем выполнять операции с любым типом,
-                    но по итогу передаем все равно double. Верно же, что для использования всего потенциала
-                    описанных методов в классе Calculator нужно что-то такое:
-                    Calculator.<Integer,Double>summation(5, 5.2)?? И, как я понял, когда пишем
+                    но по итогу передаем все равно double. И, как я понял, когда пишем
                     System.out.println(Calculator.summation(in.nextDouble(), in.nextDouble()));
                     это то же самое, если бы было указано <Double, Double> при вызове :(
                      */

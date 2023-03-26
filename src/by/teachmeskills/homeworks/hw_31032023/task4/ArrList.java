@@ -13,25 +13,34 @@ public class ArrList<T> {
      */
 
     public ArrList(int capacity) {
-        if (capacity <= 0)
+        if (capacity <= 0) {
             throw new IllegalArgumentException("Provided capacity is <= 0");
-        else {
+        } else {
             list = (T[]) new Object[capacity];
-            CURRENT_CAPASITY = capacity;
+            setCURRENT_CAPASITY(capacity);
         }
     }
 
     public ArrList() {
         list = (T[]) new Object[DEFAULT_CAPACITY];
-        CURRENT_CAPASITY = DEFAULT_CAPACITY;
+        setCURRENT_CAPASITY(DEFAULT_CAPACITY);
+    }
+
+    public int getCURRENT_CAPASITY() {
+        return CURRENT_CAPASITY;
+    }
+
+    private void setCURRENT_CAPASITY(int CURRENT_CAPASITY) {
+        this.CURRENT_CAPASITY = CURRENT_CAPASITY;
     }
 
     public void add(T item) {
-        if (item == null)
+        if (item == null) {
             throw new IllegalArgumentException("Provided item is null");
-        if (size >= CURRENT_CAPASITY) {
-            CURRENT_CAPASITY = (CURRENT_CAPASITY * 3) / 2 + 1;
-            list = Arrays.copyOf(list, CURRENT_CAPASITY);
+        }
+        if (size >= getCURRENT_CAPASITY()) {
+            setCURRENT_CAPASITY((getCURRENT_CAPASITY() * 3) / 2 + 1);
+            list = Arrays.copyOf(list, getCURRENT_CAPASITY());
         }
         list[size++] = item;
     }
@@ -43,11 +52,12 @@ public class ArrList<T> {
         if (index > size) {
             throw new IllegalArgumentException("Provided index is > size ");
         }
-        if (item == null)
+        if (item == null) {
             throw new IllegalArgumentException("Provided item is null");
-        if (index >= CURRENT_CAPASITY) {
-            CURRENT_CAPASITY = (CURRENT_CAPASITY * 3) / 2 + 1;
-            list = Arrays.copyOf(list, CURRENT_CAPASITY);
+        }
+        if (index >= getCURRENT_CAPASITY()) {
+            setCURRENT_CAPASITY((getCURRENT_CAPASITY() * 3) / 2 + 1);
+            list = Arrays.copyOf(list, getCURRENT_CAPASITY());
         }
         for (int i = size; i > index; i--) {
             list[i] = list[i - 1];
@@ -74,8 +84,9 @@ public class ArrList<T> {
           if(item == null)
             throw new IllegalArgumentException("Provided item is null");
          */
-        if (item == null)
+        if (item == null) {
             return -1;
+        }
         for (int i = 0; i < size; i++) {
             if (item.equals(list[i])) {
                 return i;
@@ -85,11 +96,13 @@ public class ArrList<T> {
     }
 
     public void remove(T item) {
-        if (item == null)
+        if (item == null) {
             throw new IllegalArgumentException("Provided item is null");
+        }
         int position = indexOf(item);
-        if (position < 0)
+        if (position < 0) {
             return;
+        }
         remove(position);
     }
 
@@ -104,8 +117,9 @@ public class ArrList<T> {
     }
 
     public boolean contains(T item) {
-        if (item == null)
+        if (item == null) {
             throw new IllegalArgumentException("Provided item is null");
+        }
         for (int i = 0; i < size; i++) {
             if (item.equals(list[i])) {
                 return true;
@@ -131,8 +145,9 @@ public class ArrList<T> {
         if (index >= size) {
             throw new IllegalArgumentException("Provided index is >= size ");
         }
-        if (item == null)
+        if (item == null) {
             throw new IllegalArgumentException("Provided item is null");
+        }
         list[index] = item;
     }
 

@@ -1,7 +1,18 @@
 package by.teachmeskills.homeworks.hw_31032023.task2;
 
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class DocValidatorUtils {
     private static ArrayList<String> docPaths = new ArrayList<>();
@@ -20,8 +31,9 @@ public class DocValidatorUtils {
         while (!Objects.equals(option, "0")) {
             System.out.println("Enter document path line (0 to stop)");
             option = in.nextLine();
-            if (!Objects.equals(option, "0"))
+            if (!Objects.equals(option, "0")) {
                 docPaths.add(option);
+            }
         }
     }
 
@@ -53,8 +65,9 @@ public class DocValidatorUtils {
                     } else {
                         HashSet<Character> chars = new HashSet<>();
                         for (Character ch : s.toCharArray()) {
-                            if (ch < 48 || (ch > 57 && ch < 65) || (ch > 90 && ch < 97) || ch > 122)
+                            if (ch < 48 || (ch > 57 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) {
                                 chars.add(ch);
+                            }
                         }
                         docValidation.put(s, " - invalid - incorrect name of the document, illegal symbol(s)" + chars);
                     }
