@@ -80,10 +80,6 @@ public class ArrList<T> {
     }
 
     public int indexOf(T item) {
-        /*
-          if(item == null)
-            throw new IllegalArgumentException("Provided item is null");
-         */
         if (item == null) {
             return -1;
         }
