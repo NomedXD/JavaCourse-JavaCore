@@ -1,11 +1,15 @@
 package by.teachmeskills.homeworks.hw_17022023;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class MergeSort {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        LinkedList a = new LinkedList<Integer>();
+        HashMap v = new HashMap();
         System.out.println("Введите размер массива n");
         int n = in.nextInt();
         int[] arr = new int[n];
