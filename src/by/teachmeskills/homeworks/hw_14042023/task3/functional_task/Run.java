@@ -5,11 +5,11 @@ import java.util.function.Function;
 
 public class Run {
     public static void main(String[] args) {
-        Function<Integer,String> lambda = s -> {
-            if(s>0){
+        Function<Integer, String> lambda = s -> {
+            if (s > 0) {
                 return "Положительное число";
-            } else if (s<0) {
-              return "Отрицательное число";
+            } else if (s < 0) {
+                return "Отрицательное число";
             } else {
                 return "Ноль";
             }

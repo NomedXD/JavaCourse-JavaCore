@@ -11,8 +11,8 @@ public class Run {
                 res *= i;
             System.out.println(res);
         };
-        boolean exit = true;
-        while (exit) {
+        boolean exit = false;
+        while (!exit) {
             System.out.println("Введите опцию");
             System.out.println("""
                     1 - вывести строку в обратном порядке
@@ -31,7 +31,7 @@ public class Run {
                     break;
                 }
                 default: {
-                    exit = false;
+                    exit = true;
                     break;
                 }
             }
