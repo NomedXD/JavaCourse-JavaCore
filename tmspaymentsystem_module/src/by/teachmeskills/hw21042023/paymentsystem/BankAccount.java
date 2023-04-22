@@ -1,4 +1,4 @@
-package paymentsystem;
+package by.teachmeskills.hw21042023.paymentsystem;
 
 import java.time.LocalDateTime;
 

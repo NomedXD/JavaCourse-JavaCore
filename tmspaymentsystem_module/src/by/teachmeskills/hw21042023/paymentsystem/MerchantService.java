@@ -1,8 +1,8 @@
-package paymentsystem;
+package by.teachmeskills.hw21042023.paymentsystem;
 
-import paymentsystem.exeptions.BankAccountNotFoundException;
-import paymentsystem.exeptions.MerchantNotFoundException;
-import paymentsystem.exeptions.NoBankAccountsFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.BankAccountNotFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.MerchantNotFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.NoBankAccountsFoundException;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static paymentsystem.IFilePathes.ROOT;
+import static by.teachmeskills.hw21042023.paymentsystem.IFilePathes.ROOT;
 
 public class MerchantService {
     private final List<Merchant> merchants;

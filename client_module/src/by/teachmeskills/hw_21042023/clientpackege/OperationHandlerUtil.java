@@ -1,12 +1,12 @@
-package clientpackege;
+package by.teachmeskills.hw_21042023.clientpackege;
 
-import paymentsystem.BankAccount;
-import paymentsystem.Merchant;
-import paymentsystem.MerchantService;
-import paymentsystem.StatusCondition;
-import paymentsystem.exeptions.BankAccountNotFoundException;
-import paymentsystem.exeptions.MerchantNotFoundException;
-import paymentsystem.exeptions.NoBankAccountsFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.BankAccount;
+import by.teachmeskills.hw21042023.paymentsystem.Merchant;
+import by.teachmeskills.hw21042023.paymentsystem.MerchantService;
+import by.teachmeskills.hw21042023.paymentsystem.StatusCondition;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.BankAccountNotFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.MerchantNotFoundException;
+import by.teachmeskills.hw21042023.paymentsystem.exeptions.NoBankAccountsFoundException;
 
 import java.time.LocalDateTime;
 import java.util.List;
