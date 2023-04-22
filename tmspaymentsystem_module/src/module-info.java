@@ -1,4 +1,4 @@
-module tmspaymentsystem {
+module tmspaymentsystem_module {
     exports paymentsystem;
     exports paymentsystem.exeptions;
 }

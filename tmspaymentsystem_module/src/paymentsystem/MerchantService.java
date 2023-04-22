@@ -87,9 +87,10 @@ public class MerchantService {
     }
 
     public void deleteMerchant(String id) throws MerchantNotFoundException {
-        Merchant tempMerchant = merchants.stream().filter(s -> !s.getId().equals(id)).findFirst().orElseThrow(() ->
+        Merchant tempMerchant = merchants.stream().filter(s -> s.getId().equals(id)).findFirst().orElseThrow(() ->
                 new MerchantNotFoundException("Мерчант не был найден по данному id\n"));
         tempMerchant.getBankAccounts().clear();
+        merchants.remove(tempMerchant);
     }
 
     public void synchronizationMerchantFileDB() {
@@ -133,7 +134,7 @@ public class MerchantService {
             System.out.println("При обновлении базы данных произошла ошибка");
         }
         File file1 = new File(ROOT + "bank_account.txt");
-        File file2 = new File(ROOT + "bank_avvounttemp.txt");
+        File file2 = new File(ROOT + "bank_accountTemp.txt");
         File file3 = new File(ROOT + "bank_account.txt");
         if (file1.exists() && file1.delete() && file2.exists()) {
             System.out.println(file2.renameTo(file3) ? "Обновление bank_account прошло успешно" :
@@ -150,16 +151,18 @@ public class MerchantService {
     }
 
     public void loadData() {
-        try (Stream<String> s1 = Files.lines(Paths.get(ROOT + "merchant.txt"));
-             Stream<String> s2 = Files.lines(Paths.get(ROOT + "bank_account.txt"))) {
+        try (Stream<String> stream1 = Files.lines(Paths.get(ROOT + "merchant.txt"));
+             Stream<String> stream2 = Files.lines(Paths.get(ROOT + "bank_account.txt"))){
+            List<String> s1 = stream1.toList();
+            List<String> s2 = stream2.toList();
             // Чтение мерчантов из файла
             s1.forEach(s -> {
                 String[] readData = s.split(" ");
                 merchants.add(new Merchant(readData[0], readData[1], LocalDateTime.parse(readData[2])));
             });
             // Чтение аккаунтов из файла
-            merchants.forEach(s -> {
-                s2.forEach(k -> {
+            for(Merchant s : merchants){
+               s2.forEach(k -> {
                     String[] readData = k.split(" ");
                     if (readData[0].equals(s.getId())) {
                         StatusCondition statusCondition = (readData[1].equals(StatusCondition.ACTIVE.toString())) ?
@@ -168,7 +171,8 @@ public class MerchantService {
                                 LocalDateTime.parse(readData[3])));
                     }
                 });
-            });
+            }
+
         } catch (IOException e) {
             System.out.println("При загрузке данных произошла ошибка");
         }
