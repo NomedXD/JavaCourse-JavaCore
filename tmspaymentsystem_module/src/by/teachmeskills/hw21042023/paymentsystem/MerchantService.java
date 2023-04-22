@@ -152,7 +152,7 @@ public class MerchantService {
 
     public void loadData() {
         try (Stream<String> stream1 = Files.lines(Paths.get(ROOT + "merchant.txt"));
-             Stream<String> stream2 = Files.lines(Paths.get(ROOT + "bank_account.txt"))){
+             Stream<String> stream2 = Files.lines(Paths.get(ROOT + "bank_account.txt"))) {
             List<String> s1 = stream1.toList();
             List<String> s2 = stream2.toList();
             // Чтение мерчантов из файла
@@ -161,8 +161,8 @@ public class MerchantService {
                 merchants.add(new Merchant(readData[0], readData[1], LocalDateTime.parse(readData[2])));
             });
             // Чтение аккаунтов из файла
-            for(Merchant s : merchants){
-               s2.forEach(k -> {
+            for (Merchant s : merchants) {
+                s2.forEach(k -> {
                     String[] readData = k.split(" ");
                     if (readData[0].equals(s.getId())) {
                         StatusCondition statusCondition = (readData[1].equals(StatusCondition.ACTIVE.toString())) ?
