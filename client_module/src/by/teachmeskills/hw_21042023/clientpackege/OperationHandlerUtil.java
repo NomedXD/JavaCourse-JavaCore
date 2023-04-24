@@ -17,7 +17,7 @@ public class OperationHandlerUtil {
 
     }
 
-    private static void addingMerchantOption(MerchantService merchantService) {
+    private static void addMerchantOption(MerchantService merchantService) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите имя мерчанта");
         String name = in.nextLine();
@@ -61,7 +61,7 @@ public class OperationHandlerUtil {
         merchantService.synchronizationBankAccountFileDB();
     }
 
-    private static void addingBankAccountOption(MerchantService merchantService) {
+    private static void addBankAccountMerchant(MerchantService merchantService) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите id мерчанта для добавления ему банкоского аккаунта");
         try {
@@ -150,7 +150,7 @@ public class OperationHandlerUtil {
             System.out.println("9 - Выход");
             switch (in.nextLine()) {
                 case "1" -> {
-                    addingMerchantOption(merchantService);
+                    addMerchantOption(merchantService);
                 }
                 case "2" -> {
                     showMerchantsOption(merchantService);
@@ -162,7 +162,7 @@ public class OperationHandlerUtil {
                     deleteMerchantOption(merchantService);
                 }
                 case "5" -> {
-                    addingBankAccountOption(merchantService);
+                    addBankAccountMerchant(merchantService);
                 }
                 case "6" -> {
                     showBankAccountsOption(merchantService);

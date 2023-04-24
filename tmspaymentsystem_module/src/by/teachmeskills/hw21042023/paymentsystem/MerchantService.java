@@ -35,7 +35,6 @@ public class MerchantService {
                         bankAccount.getAccountNumber() + " " + bankAccount.getCreatedAt() + "\n");
             } catch (IOException e) {
                 System.out.println("Возникла файловая ошибка");
-                ;
             }
         } else {
             BankAccount temp = merchant.getBankAccounts().stream().filter(s -> s.getAccountNumber().equals(bankAccount.getAccountNumber())).
