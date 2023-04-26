@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!--Определение простых типов-->
+    <xs:simpleType name="stringtype">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <!-- Для примера также описание типа имени доктора!-->
+    <xs:simpleType name="doctorname">
+        <xs:restriction base="xs:string">
+            <!-- Попробовал явно указать начало строки через ^: ^[A-Z][a-z]+(\s[A-Z][a-z]+){2}
+                 почему-то выдает несовпадение -_- -->
+            <xs:pattern value="[A-Z][a-z]+(\s[A-Z][a-z]+){2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Определение сложных элементов !-->
+    <xs:complexType name="doctortype">
+        <xs:sequence>
+            <xs:element name="name" type="doctorname"/>
+            <xs:element name="position" type="stringtype"/>
+            <xs:element name="department" type="stringtype"/>
+            <xs:element name="experience" type="stringtype"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nursetype">
+        <xs:sequence>
+            <xs:element name="name" type="stringtype"/>
+            <xs:element name="position" type="stringtype"/>
+            <xs:element name="department" type="stringtype"/>
+            <xs:element name="experience" type="stringtype"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="hospitaltype">
+        <xs:sequence>
+            <xs:element name="doctor" type="doctortype" maxOccurs="unbounded"/>
+            <xs:element name="nurse" type="nursetype" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="hospital" type="hospitaltype"/>
+</xs:schema>
