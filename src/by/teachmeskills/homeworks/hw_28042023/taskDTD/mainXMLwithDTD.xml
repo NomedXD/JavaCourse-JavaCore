@@ -1,0 +1,43 @@
+<?xml version ="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hospital[
+        <!ELEMENT hospital (doctor+,nurse+)>
+        <!ELEMENT doctor (name, position, department, experience)>
+        <!ELEMENT nurse (name, position, department, experience)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT position (#PCDATA)>
+        <!ELEMENT department (#PCDATA)>
+        <!ELEMENT experience (#PCDATA)>
+        ]>
+<hospital>
+    <doctor>
+        <name>John Adams Watermelon</name>
+        <position>Head of the department</position>
+        <department>2-nd surgery department</department>
+        <experience>20 years</experience>
+    </doctor>
+    <doctor>
+        <name>Van Darkholme Gachimuchi</name>
+        <position>Proctologist</position>
+        <department>2-nd surgery department</department>
+        <experience>10 years</experience>
+    </doctor>
+    <doctor>
+        <name>Robert Gray Alaba</name>
+        <position>Cardiologist-surgeon</position>
+        <department>1-st surgery department</department>
+        <experience>8 years</experience>
+    </doctor>
+    <nurse>
+        <name>Deborah Smith Popoa</name>
+        <position>nurse</position>
+        <department>Therapeutic department</department>
+        <experience>5 years</experience>
+    </nurse>
+    <nurse>
+        <name>Clara Jenkins Loreley</name>
+        <position>nurse</position>
+        <department>Rehabilitation department</department>
+        <experience>7 year</experience>
+    </nurse>
+
+</hospital>
