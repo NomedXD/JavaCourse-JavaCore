@@ -8,8 +8,6 @@
     <!-- Для примера также описание типа имени доктора!-->
     <xs:simpleType name="doctorname">
         <xs:restriction base="xs:string">
-            <!-- Попробовал явно указать начало строки через ^: ^[A-Z][a-z]+(\s[A-Z][a-z]+){2}
-                 почему-то выдает несовпадение -_- -->
             <xs:pattern value="[A-Z][a-z]+(\s[A-Z][a-z]+){2}"/>
         </xs:restriction>
     </xs:simpleType>

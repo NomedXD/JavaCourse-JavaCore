@@ -4,7 +4,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import by.teachmeskills.homeworks.hw_28042023.Employee;
-import task_JaxBparser.objectsclasses.Hospital;
+import taskjaxbparser.objectsclasses.Hospital;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

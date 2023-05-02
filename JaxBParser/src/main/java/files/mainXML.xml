@@ -20,13 +20,13 @@
     </doctor>
     <nurse>
         <name>Deborah Smith Popoa</name>
-        <position>task_JaxBparser.objectsclasses.Nurse</position>
+        <position>taskjaxbparser.objectsclasses.Nurse</position>
         <department>Therapeutic department</department>
         <experience>5 years</experience>
     </nurse>
     <nurse>
         <name>Clara Jenkins Loreley</name>
-        <position>task_JaxBparser.objectsclasses.Nurse</position>
+        <position>taskjaxbparser.objectsclasses.Nurse</position>
         <department>Rehabilitation department</department>
         <experience>7 years</experience>
     </nurse>

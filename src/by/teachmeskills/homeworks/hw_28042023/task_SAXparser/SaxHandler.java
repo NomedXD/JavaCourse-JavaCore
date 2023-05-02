@@ -13,21 +13,6 @@ public class SaxHandler extends DefaultHandler {
     private String lastElement;
 
     @Override
-    public void startDocument() throws SAXException {
-        super.startDocument();
-    }
-
-    @Override
-    public void endDocument() throws SAXException {
-        super.endDocument();
-    }
-
-    @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        lastElement = qName;
-    }
-
-    @Override
     public void endElement(String uri, String localName, String qName) {
         if (name != null && !name.isEmpty() && (position != null && !position.isEmpty()) &&
                 (department != null && !department.isEmpty()) && (experience != null && !experience.isEmpty())) {
@@ -59,10 +44,5 @@ public class SaxHandler extends DefaultHandler {
                 experience = data;
             }
         }
-    }
-
-    @Override
-    public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
-        super.ignorableWhitespace(ch, start, length);
     }
 }
