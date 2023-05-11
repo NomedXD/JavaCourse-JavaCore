@@ -53,7 +53,7 @@ public class CRUIDUtils {
             preparedStatement.setString(2, bankAccount.getMerchantId());
             ResultSet resultSet = preparedStatement.executeQuery();
             int size = 0;
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 size++;
             }
             return size;
@@ -82,7 +82,7 @@ public class CRUIDUtils {
             preparedStatement.setString(1, bankAccount.getMerchantId());
             preparedStatement.setString(2, bankAccount.getAccountNumber());
             int res = preparedStatement.executeUpdate();
-            if (res == 0){
+            if (res == 0) {
                 throw new IllegalArgumentException("При поиске аккаунтов произошла неизвестная ошибка");
             }
         } catch (SQLException e) {
@@ -93,12 +93,12 @@ public class CRUIDUtils {
     public static List<BankAccount> getMerchantBankAccounts(String id, Connection connection) throws NoBankAccountsFoundException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_BANK_ACCOUNTS_QUERY);
-            preparedStatement.setString(1,id);
+            preparedStatement.setString(1, id);
             ResultSet set = preparedStatement.executeQuery();
             List<BankAccount> list = new ArrayList<>();
             while (set.next()) {
-                StatusCondition status = (set.getString("status").equals("ACTIVE"))?
-                        StatusCondition.ACTIVE: StatusCondition.DELETED;
+                StatusCondition status = (set.getString("status").equals("ACTIVE")) ?
+                        StatusCondition.ACTIVE : StatusCondition.DELETED;
                 list.add(new BankAccount(set.getString("id"), set.getString("merchant_id"),
                         status, set.getString("account_number"),
                         set.getTimestamp("created_at").toLocalDateTime()));
@@ -113,9 +113,9 @@ public class CRUIDUtils {
                                          Connection connection) throws BankAccountNotFoundException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACCOUNT_NUMBER);
-            preparedStatement.setString(1,newNumber);
-            preparedStatement.setString(2,merchant_id);
-            preparedStatement.setString(3,account_number);
+            preparedStatement.setString(1, newNumber);
+            preparedStatement.setString(2, merchant_id);
+            preparedStatement.setString(3, account_number);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new BankAccountNotFoundException("Такой банковский аккаунт не найден");
