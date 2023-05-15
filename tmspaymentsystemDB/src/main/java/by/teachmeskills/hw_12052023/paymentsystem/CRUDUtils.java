@@ -12,24 +12,27 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.COUNT_DUPLICATE_BANK_ACCOUNT;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.DELETE_BANK_ACCOUNT_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.DELETE_MERCHANT_BY_ID_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.GET_BANK_ACCOUNTS_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.INSERT_BANK_ACCOUNT_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.INSERT_MERCHANT_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.GET_MERCHANTS_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.SELECT_MERCHANT_BY_ID_QUERY;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.UPDATE_ACCOUNT_NUMBER;
-import static by.teachmeskills.hw_12052023.paymentsystem.IQueries.UPDATE_ACCOUNT_STATUS;
+public class CRUDUtils {
+    private static final String GET_MERCHANTS_QUERY = "SELECT * FROM merchant";
+    private static final String INSERT_MERCHANT_QUERY = "INSERT INTO merchant (id, name, created_at) Values (?, ?, ?)";
+    private static final String SELECT_MERCHANT_BY_ID_QUERY = "SELECT * FROM merchant WHERE id = ?";
+    private static final String DELETE_MERCHANT_BY_ID_QUERY = "DELETE FROM merchant WHERE id = ?";
+    private static final String COUNT_DUPLICATE_BANK_ACCOUNT = "SELECT * FROM bank_account WHERE account_number = ? AND merchant_id = ?";
+    private static final String INSERT_BANK_ACCOUNT_QUERY = "INSERT INTO bank_account (id, merchant_id, status, account_number, " +
+            "created_at) Values (?, ?, ?, ?, ?)";
+    // Update и delete можно заменить на один запрос и поставить вайлдкарт символ
+    private static final String UPDATE_ACCOUNT_STATUS = "UPDATE bank_account SET status = ACTIVE WHERE merchant_id = ? AND account_number = ?";
+    private static final String GET_BANK_ACCOUNTS_QUERY = "SELECT * FROM bank_account WHERE merchant_id = ? ORDER BY status, created_at";
+    private static final String DELETE_BANK_ACCOUNT_QUERY = "UPDATE bank_account SET status = DELETE WHERE merchant_id = ? AND account_number = ?";
+    private static final String UPDATE_ACCOUNT_NUMBER = "UPDATE bank_account SET account_number = ? WHERE merchant_id = ? AND account_number = ?";
 
-public class CRUIDUtils {
+    private static Connection connection;
 
-    private CRUIDUtils() {
-
+    private CRUDUtils() {
+        connection = DBUtils.getConnection();
     }
 
-    public static void addBankAccount(BankAccount bankAccount, Connection connection) {
+    public static void addBankAccount(BankAccount bankAccount) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(INSERT_BANK_ACCOUNT_QUERY);
@@ -44,7 +47,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static int findExistingAccount(BankAccount bankAccount, Connection connection) {
+    public static int findExistingAccount(BankAccount bankAccount) {
         PreparedStatement preparedStatement = null;
         try {
             // Пытался с помощью COUNT, но не получилось
@@ -62,7 +65,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static String checkForActiveStatus(BankAccount bankAccount, Connection connection) {
+    public static String checkForActiveStatus(BankAccount bankAccount) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(COUNT_DUPLICATE_BANK_ACCOUNT);
@@ -76,7 +79,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static void updateBankAccountStatus(BankAccount bankAccount, Connection connection) throws IllegalArgumentException {
+    public static void updateBankAccountStatus(BankAccount bankAccount) throws IllegalArgumentException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACCOUNT_STATUS);
             preparedStatement.setString(1, bankAccount.getMerchantId());
@@ -90,7 +93,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static List<BankAccount> getMerchantBankAccounts(String id, Connection connection) throws NoBankAccountsFoundException {
+    public static List<BankAccount> getMerchantBankAccounts(String id) throws NoBankAccountsFoundException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_BANK_ACCOUNTS_QUERY);
             preparedStatement.setString(1, id);
@@ -109,8 +112,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static void updateBankAccount(String newNumber, String merchant_id, String account_number,
-                                         Connection connection) throws BankAccountNotFoundException {
+    public static void updateBankAccount(String newNumber, String merchant_id, String account_number) throws BankAccountNotFoundException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACCOUNT_NUMBER);
             preparedStatement.setString(1, newNumber);
@@ -122,7 +124,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static void deleteBankAccount(String merchantId, String accountNum, Connection connection) throws BankAccountNotFoundException {
+    public static void deleteBankAccount(String merchantId, String accountNum) throws BankAccountNotFoundException {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(DELETE_BANK_ACCOUNT_QUERY);
@@ -134,7 +136,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static void createMerchant(Merchant merchant, Connection connection) {
+    public static void createMerchant(Merchant merchant) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_MERCHANT_QUERY);
             preparedStatement.setString(1, merchant.getId());
@@ -146,7 +148,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static List<Merchant> getMerchants(Connection connection) {
+    public static List<Merchant> getMerchants() {
         try {
             ResultSet set = connection.createStatement().executeQuery(GET_MERCHANTS_QUERY);
             List<Merchant> list = new ArrayList<>();
@@ -160,10 +162,11 @@ public class CRUIDUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>() {
+        };
     }
 
-    public static Merchant getMerchantById(String id, Connection connection) throws MerchantNotFoundException {
+    public static Merchant getMerchantById(String id) throws MerchantNotFoundException {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_MERCHANT_BY_ID_QUERY);
             preparedStatement.setString(1, id);
@@ -176,7 +179,7 @@ public class CRUIDUtils {
         }
     }
 
-    public static void deleteMerchant(String id, Connection connection) throws MerchantNotFoundException {
+    public static void deleteMerchant(String id) throws MerchantNotFoundException {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(DELETE_MERCHANT_BY_ID_QUERY);
